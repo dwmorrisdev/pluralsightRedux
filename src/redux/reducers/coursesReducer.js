@@ -1,4 +1,4 @@
-export default function courseReducer(state = [], action) {
+export default function coursesReducer(state = [], action) {
     // must be pure
     switch(action.type) {
         case "CREATE_COURSE":
