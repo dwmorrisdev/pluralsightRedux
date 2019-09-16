@@ -19,6 +19,18 @@ class CoursesPage extends React.Component {
     handleSubmit = event => {
         event.preventDefault();
         this.props.dispatch(courseActions.createCourse(this.state.course));
+        const courseClear = {...this.state.course, title: ""};
+        this.setState({course: courseClear});
+    };
+
+    handleClear = () => {
+        //clear all courses
+        alert("erase courses from state/store");
+    };
+
+    killCourse = event => {
+        //clear given courses
+        alert(`erase ${event.target.value} from state/store`);
     };
 
     render() {
@@ -31,9 +43,11 @@ class CoursesPage extends React.Component {
                     onChange={this.handleChange}
                     value={this.state.course.title}
                 />
+
                 <input type="submit" value="Save" />
+                <input type="button" onClick={this.handleClear} value="Clear Courses"/>
                 {this.props.courses.map(course => (
-                    <div key={course.title}>{course.title}</div>
+                    <div key={course.title}>{course.title} <input type="button" onClick={this.killCourse} value="kill"/></div>
                 ))}
             </form>
         );
